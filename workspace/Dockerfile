@@ -663,6 +663,7 @@ ARG INSTALL_NODE=false
 ARG INSTALL_NPM_GULP=false
 ARG INSTALL_NPM_BOWER=false
 ARG INSTALL_NPM_VUE_CLI=false
+ARG INSTALL_NPM_CONTROLLA_CLI=false
 ARG INSTALL_NPM_ANGULAR_CLI=false
 ARG NPM_REGISTRY
 ENV NPM_REGISTRY ${NPM_REGISTRY}
@@ -692,6 +693,9 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
         ;fi \
         && if [ ${INSTALL_NPM_ANGULAR_CLI} = true ]; then \
         npm install -g @angular/cli \
+        ;fi \
+        && if [ ${INSTALL_NPM_CONTROLLA_CLI} = true ]; then \
+        npm install -g @controlla/cli \
         ;fi \
         && ln -s `npm bin --global` /home/laradock/.node-bin \
 ;fi
@@ -734,6 +738,18 @@ RUN if [ ${NPM_REGISTRY} ]; then \
     . ~/.bashrc && npm config set registry ${NPM_REGISTRY} \
 ;fi
 
+###########################################################################
+# move:
+###########################################################################
+
+USER root
+
+ARG INSTALL_NPM_CONTROLLA_CLI=false
+
+RUN if [ ${INSTALL_NPM_CONTROLLA_CLI} = true ]; then \
+    apt-get update \
+    && apt-get install -y rename \
+;fi
 
 ###########################################################################
 # PNPM:
