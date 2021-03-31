@@ -1,3 +1,7 @@
 [profile eb-cli]
-aws_access_key_id =
-aws_secret_access_key =
+aws_access_key_id = AKIARRAJEBDEM3MWWLUC
+aws_secret_access_key = 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
+
+[profile texcaz]
+aws_access_key_id = AKIAQZ7GU7ATF4UHGCVD
+aws_secret_access_key = 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
