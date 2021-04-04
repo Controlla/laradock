@@ -755,7 +755,8 @@ RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
     else \
       pecl install imagick; \
     fi && \
-    docker-php-ext-enable imagick \
+    docker-php-ext-enable imagick; \
+    php -m | grep -q 'imagick' \
 ;fi
 
 ###########################################################################
