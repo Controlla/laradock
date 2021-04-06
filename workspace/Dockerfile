@@ -1549,7 +1549,7 @@ USER laradock
 RUN if [ ${SHELL_OH_MY_ZSH} = true ]; then \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc" && \
     sed -i -r 's/^plugins=\(.*?\)$/plugins=(laravel5 git)/' /home/laradock/.zshrc && \
-    sed -i -r 's/^ZSH_THEME=\".*?\"$/ZSH_THEME="candy"/' /home/laradock/.zshrc && \
+    sed -i -r 's/^ZSH_THEME=\".*?\"$/ZSH_THEME="af-magic"/' /home/laradock/.zshrc && \
     echo '\n\
 bindkey "^[OB" down-line-or-search\n\
 bindkey "^[OC" forward-char\n\
