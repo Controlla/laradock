@@ -1546,7 +1546,8 @@ ARG SHELL_OH_MY_ZSH_ALIASES=false
 USER laradock
 RUN if [ ${SHELL_OH_MY_ZSH} = true ]; then \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc" && \
-    sed -i -r 's/^plugins=\(.*?\)$/plugins=(laravel5)/' /home/laradock/.zshrc && \
+    sed -i -r 's/^plugins=\(.*?\)$/plugins=(laravel5 git)/' /home/laradock/.zshrc && \
+    sed -i -r 's/^ZSH_THEME=\".*?\"$/ZSH_THEME="candy"/' /home/laradock/.zshrc && \
     echo '\n\
 bindkey "^[OB" down-line-or-search\n\
 bindkey "^[OC" forward-char\n\
@@ -1561,7 +1562,8 @@ bindkey "^[[6~" down-line-or-history\n\
 bindkey "^?" backward-delete-char\n' >> /home/laradock/.zshrc && \
   if [ ${SHELL_OH_MY_ZSH_AUTOSUGESTIONS} = true ]; then \
     sh -c "git clone https://github.com/zsh-users/zsh-autosuggestions /home/laradock/.oh-my-zsh/custom/plugins/zsh-autosuggestions" && \
-    sed -i 's~plugins=(~plugins=(zsh-autosuggestions ~g' /home/laradock/.zshrc && \
+    sh -c "git clone https://github.com/zsh-users/zsh-syntax-highlighting /home/laradock/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" && \
+    sed -i 's~plugins=(~plugins=(zsh-autosuggestions zsh-syntax-highlighting ~g' /home/laradock/.zshrc && \
     sed -i '1iZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20' /home/laradock/.zshrc && \
     sed -i '1iZSH_AUTOSUGGEST_STRATEGY=(history completion)' /home/laradock/.zshrc && \
     sed -i '1iZSH_AUTOSUGGEST_USE_ASYNC=1' /home/laradock/.zshrc && \
