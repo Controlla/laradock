@@ -584,9 +584,7 @@ RUN if [ "${INSTALL_TAINT}" = true ]; then \
 ARG INSTALL_LIBPNG=false
 
 RUN if [ ${INSTALL_LIBPNG} = true ]; then \
-    apt-get update && \
-    apt-get install libpng16-16 \
-    apt-get install libjpeg-dev libpng-dev libtiff-dev libgif-dev \
+    apt-get -yqq install libpng16-16 \
 ;fi
 
 ###########################################################################
@@ -1673,3 +1671,5 @@ RUN apt-get clean && \
 
 # Set default work directory
 WORKDIR /var/www
+
+EXPOSE 3300
