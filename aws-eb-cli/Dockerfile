@@ -1,4 +1,4 @@
-FROM python:3.9.5-slim
+FROM python:slim
 
 LABEL maintainer="melchabcede@gmail.com"
 
@@ -17,3 +17,5 @@ RUN cd /root/.aws && chmod 600 *
 
 # Set default work directory
 WORKDIR /var/www
+
+
